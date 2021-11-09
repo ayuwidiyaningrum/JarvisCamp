@@ -1,0 +1,26 @@
+1. Membuat Database :
+   create database myshop;
+
+2. Membuat Table di Dalam Database :
+   -MariaDB [myshop]> create table users (id int auto_increment, name varchar(255), email varchar(255), password varchar(255), primary key(id));
+   -MariaDB [myshop]> create table categories (id int auto_increment, name varchar(255), primary key(id));
+   -MariaDB [myshop]> create table items(id int auto_increment primary key, name varchar(255), description varchar(255), price int, stock int, 
+    category_id int, constraint category_id foreign key (category_id) references categories (id));
+
+3. Memasukkan Data pada Table :
+   -MariaDB [myshop]> insert into users(name,email,password) values ('John Doe','john@doe.com','john123'),('Jane Doe','jane@doe.com','jenita123');
+   -MariaDB [myshop]> insert into categories(name) values ('gadget'),('cloth'),('men'),('women'),('branded');
+   -MariaDB [myshop]> insert into items(name,description,price,stock,category_id) values ('Sumsang b50','hape keren dari merek sumsang',4000000,100,1),
+   ('Uniklooh','baju keren dari brand ternama',500000,50,2),('IMHO Watch','jam tangan anak yang jujur banget',2000000,10,1);
+
+4. Mengambil Data dari Database :
+   -Mengambil seluruh data users kecuali password : MariaDB [myshop]> select id,name,email from users;
+   -Mengambil data items
+    a. Buatlah sebuah query untuk mendapatkan data item pada table items yang memiliki harga di atas 1000000 (satu juta).
+       -MariaDB [myshop]> select * from items where price > 1000000;
+    b. Buat sebuah query untuk mengambil data item pada table items yang memiliki name serupa atau mirip (like) dengan kata kunci “uniklo”, “watch”, atau “sang” (pilih salah satu saja).
+       -MariaDB [myshop]> select * from items where name like '%uniklo%';
+   -Menampilkan data items join dengan kategori : MariaDB [myshop]> select items.name, description, price, stock, category_id, categories.name as kategori from items inner join categories on items.category_id = categories.id;
+
+5. Mengubah Data dari Database
+   -MariaDB [myshop]> update items set price = 2500000 where name = 'Sumsang b50';
