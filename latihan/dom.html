@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="satu">Hallo</h1>
+    <h1 class="satu">Hallo ayu</h1>
+    <h1 class="satu">Hallo ayuw</h1>
+
+    <div id="menu-makanan"></div>
+
+    <!-- dom event  -->
+    <button onclick="alert('test')">klik</button>
+    <input type="text" onchange="alert('halo')">
+
+    <form id= "formConditional">
+        <input type="text" id="name">
+        <input type="text" id="role">
+        <input type="submit" value="submit">
+    </form>
+
+    <script>
+        let form = document.getElementById('formConditional')
+        form.addEventListener("submit", function(event) {
+            // supaya tidak mereload 
+            event.preventDefault()
+            let name = document.getElementById('name').value
+            console.log
+        })
+
+        let menuMakanan = document.getElementById('menu-makanan');
+        // menambahkan sebuah teks 
+        menuMakanan.innerHTML = "Ini adalah makanan anda"
+        // menambahkan elemen html 
+        menuMakanan.innerHTML = "<h1> Nasi Goreng</h1>"
+        // menambahkan banyak elemen html menggunakan backtik 
+        menuMakanan.innerHTML = `<h2>ini adalah menu makanannya </h2>
+                                <ul>
+                                    <li> tempe </li>
+                                </ul>`
+
+
+
+        let satu = document.getElementById('satu');
+        console.log(satu);
+
+        // bisa memanggil kelas/pun id. memanggil class dengan pagar/node
+        let satu = document.querySelector('#satu'); 
+        console.log(satu);
+
+        // class menangkap elemen lebih dari satu
+        let satu = document.getElementsByClassName('satu'); 
+        console.log(satu[0]);
+
+    </script>
+</body>
+</html>
